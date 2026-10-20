@@ -394,7 +394,7 @@ noscript p{padding:16px;background:#fff;color:var(--navy);font-weight:600;text-a
 .ql .hint{display:block;font-size:12px;margin-top:1px;color:var(--muted)}
 .ql.off{opacity:.55}.ql.off .atom{filter:grayscale(.4)}
 .ql:focus-visible{outline:none}.ql:focus-visible .lb{outline:3px solid var(--teal)}
-@media(max-width:980px){.in.rail:has(.mstage){grid-template-columns:1fr}.mbonds{display:none}.mstage{aspect-ratio:auto;display:grid;grid-template-columns:1fr 1fr;gap:20px 12px}.ql{position:static;transform:none;width:auto;height:auto;display:flex;align-items:center;gap:12px}.ql:hover{transform:none}.ql .lb{position:static;transform:none!important;width:auto;text-align:left!important;flex:1}.ql .qa{flex:0 0 78px}}
+@media(max-width:980px){.in.rail:has(.mstage){grid-template-columns:1fr}.mbonds{display:none}.mstage{aspect-ratio:auto;display:grid;grid-template-columns:1fr;gap:14px;min-width:0}.in.rail>*{min-width:0}.ql{position:static;transform:none;width:auto;height:auto;display:flex;align-items:center;gap:12px}.ql:hover{transform:none}.ql .lb{position:static;transform:none!important;width:auto;text-align:left!important;flex:1}.ql .qa{flex:0 0 78px}}
 
 
 /* lecturer: reaction scheme */
@@ -425,7 +425,7 @@ noscript p{padding:16px;background:#fff;color:var(--navy);font-weight:600;text-a
 .tb b{display:block;font-size:16px;color:var(--navy)}
 .tb .d{display:block;margin-top:3px;font-size:13.5px;color:var(--muted);line-height:1.45}
 a.tb:hover{border-color:var(--teal);box-shadow:0 10px 22px rgba(11,37,69,.12)}
-@media(max-width:980px){.rxn{grid-template-columns:1fr}.rx-box .chips{flex-direction:row;flex-wrap:wrap;align-items:center}.cat{flex-direction:column;text-align:center}.rxa{transform:rotate(90deg);width:60px;height:20px}.tubes{grid-template-columns:1fr}}
+@media(max-width:980px){.rxn{grid-template-columns:1fr}.rx-box .chips{flex-direction:row;flex-wrap:wrap;align-items:center}.cat{flex-direction:column;text-align:center}.rxa{display:none}.rx-mid::before,.rx-box.prod::before{content:"\2193";font-size:30px;font-weight:800;color:#0b2545;display:block;text-align:center;line-height:1}.rx-box.prod::before{margin-bottom:8px}.rx-box.prod .pd2{align-items:center;text-align:center}.rx-box.prod .rx-k{text-align:center}.tubes{grid-template-columns:1fr}}
 
 /* ---------- RESPONSIVE ---------- */
 @media (max-width:1180px){
@@ -469,8 +469,6 @@ a.tb:hover{border-color:var(--teal);box-shadow:0 10px 22px rgba(11,37,69,.12)}
   .bars li{grid-template-columns:110px 1fr 26px}
 }
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.deck{scroll-behavior:auto}}
-/* mobile fix: Quick links grid must not overflow narrow screens */
-@media(max-width:980px){.in.rail:has(.mstage){grid-template-columns:minmax(0,1fr)}.mstage{grid-template-columns:minmax(0,1fr)!important;justify-self:stretch}.ql .lb{min-width:0}}
 </style>
 </head>
 <body>
