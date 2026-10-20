@@ -1023,6 +1023,8 @@ deck.addEventListener('wheel',function(e){
 var k0=-1; /* always start at Home; slide not stored in URL */
 if(k0>-1){goTo(k0,true);}
 setActive(k0>-1?k0:0);
+function goHome(){try{if(location.hash)history.replaceState(null,'',location.pathname+location.search);}catch(e){}deck.style.scrollBehavior='auto';deck.scrollLeft=0;setActive(0);}
+goHome();window.addEventListener('load',function(){goHome();setTimeout(goHome,0);});
 })();
 
 (function(){var k='che485Done',saved=[];try{saved=JSON.parse(localStorage.getItem(k)||'[]')}catch(e){}
