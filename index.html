@@ -793,7 +793,7 @@ var LINKS = {
 (function(){
 var MON=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 function iso(s){var p=s.split('-').map(Number);return new Date(p[0],p[1]-1,p[2]);}
-function fmt(d){return d.getDate()+' '+MON[d.getMonth()];}
+function fmt(d){return d.getDate()+'\u00a0'+MON[d.getMonth()];}
 function mondayOf(d){var x=new Date(d.getTime());x.setDate(x.getDate()-((x.getDay()+6)%7));return x;}
 function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;');}
 
@@ -927,7 +927,7 @@ function renderLabs(c,cur){
     inf+='<b>Submit '+REPORT[n]+'</b> '+fmt(iso(c.dates[DUEIDX[n]]))+(c.holidays[DUEIDX[n]]?' (public holiday)':'');
     pos.push({x:k%2===0?136:64,y:28+k*100,oe:e.oe});
     out.push('<li class="'+(k%2===0?'R':'L')+'" style="--c:'+color+'"><span class="atom" aria-hidden="true">'+n+'</span>'+
-      '<div class="xb"><div class="tx"><div class="wk">Lab '+n+' · '+weekLabel(wi)+' · '+d.getDate()+' '+MON[d.getMonth()]+' '+d.getFullYear()+'</div>'+
+      '<div class="xb"><div class="tx"><div class="wk">Lab '+n+' · '+weekLabel(wi)+' · '+d.getDate()+'\u00a0'+MON[d.getMonth()]+' '+d.getFullYear()+'</div>'+
       '<h3>'+esc(e.name)+'</h3><div class="chips">'+chipsFor(n)+'</div>'+
       '<p class="inf">'+inf+'</p>'+
       (e.manual?'<a class="mn" href="'+e.manual+'" target="_blank" rel="noopener">'+e.mlabel+' &#8599;</a>':'<span class="mn off">Manual coming soon</span>')+
