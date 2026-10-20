@@ -469,6 +469,8 @@ a.tb:hover{border-color:var(--teal);box-shadow:0 10px 22px rgba(11,37,69,.12)}
   .bars li{grid-template-columns:110px 1fr 26px}
 }
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.deck{scroll-behavior:auto}}
+/* mobile fix: Quick links grid must not overflow narrow screens */
+@media(max-width:980px){.in.rail:has(.mstage){grid-template-columns:minmax(0,1fr)}.mstage{grid-template-columns:minmax(0,1fr)!important;justify-self:stretch}.ql .lb{min-width:0}}
 </style>
 </head>
 <body>
