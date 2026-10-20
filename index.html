@@ -427,6 +427,12 @@ noscript p{padding:16px;background:#fff;color:var(--navy);font-weight:600;text-a
 a.tb:hover{border-color:var(--teal);box-shadow:0 10px 22px rgba(11,37,69,.12)}
 @media(max-width:980px){.rxn{grid-template-columns:1fr}.rx-box .chips{flex-direction:row;flex-wrap:wrap;align-items:center}.cat{flex-direction:column;text-align:center}.rxa{display:none}.rx-mid::before,.rx-box.prod::before{content:"\2193";font-size:30px;font-weight:800;color:#0b2545;display:block;text-align:center;line-height:1}.rx-box.prod::before{margin-bottom:8px}.rx-box.prod .pd2{align-items:center;text-align:center}.rx-box.prod .rx-k{text-align:center}.tubes{grid-template-columns:1fr}}
 
+
+.fb{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:16px;font-weight:600;color:var(--navy)}
+.fb button{min-height:40px;padding:0 16px;border:1.5px solid var(--navy);border-radius:999px;background:#fff;color:var(--navy);font:inherit;font-weight:600;cursor:pointer}
+.fb button:hover{background:var(--navy);color:#fff}
+.fb.done button{display:none}
+
 /* ---------- RESPONSIVE ---------- */
 @media (max-width:1180px){
   .in{padding-left:84px;padding-right:84px}
@@ -470,6 +476,7 @@ a.tb:hover{border-color:var(--teal);box-shadow:0 10px 22px rgba(11,37,69,.12)}
 }
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.deck{scroll-behavior:auto}}
 </style>
+<script data-goatcounter="https://che485-rahida.goatcounter.com/count" data-goatcounter-settings='{"no_onload":true}' async src="//gc.zgo.at/count.js"></script>
 </head>
 <body>
 <a class="skip" href="#home">Skip to content</a>
@@ -772,7 +779,8 @@ a.tb:hover{border-color:var(--teal);box-shadow:0 10px 22px rgba(11,37,69,.12)}
     <div class="tb"><svg class="tube" viewBox="0 0 40 110" aria-hidden="true" fill="none" stroke="#0b2545" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6h28M10 6v78a10 10 0 0 0 20 0V6" fill="#fff"/><path d="M11 50c6-4 12 4 18 0v34a9 9 0 0 1-18 0z" fill="#e11d48" stroke="none"/><path d="M11 50c6-4 12 4 18 0"/><circle cx="18" cy="76" r="2.4" fill="#fff" stroke="none"/><circle cx="24" cy="64" r="1.8" fill="#fff" stroke="none"/></svg><div><b>Emergency in the lab</b><span class="d">Call 03-55436306 / 6304 (FKK general office). Report any accident or near miss to the lab technician.</span></div></div>
     <a class="tb" href="mailto:rahida@uitm.edu.my"><svg class="tube" viewBox="0 0 40 110" aria-hidden="true" fill="none" stroke="#0b2545" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6h28M10 6v78a10 10 0 0 0 20 0V6" fill="#fff"/><path d="M11 50c6-4 12 4 18 0v34a9 9 0 0 1-18 0z" fill="#14b8a6" stroke="none"/><path d="M11 50c6-4 12 4 18 0"/><circle cx="18" cy="76" r="2.4" fill="#fff" stroke="none"/><circle cx="24" cy="64" r="1.8" fill="#fff" stroke="none"/></svg><div><b>Need support or an adjustment?</b><span class="d">Email your lecturer and say what you need.</span></div></a>
   </div>
-  <p class="copy">CHE485 Chemistry Laboratory &middot; Faculty of Chemical Engineering, UiTM &middot; Oct 2026 semester</p>
+  <div class="fb" id="fb" role="group" aria-label="Page feedback"><span id="fbq">Was this page helpful?</span><button type="button" data-fb="helpful">&#128077; Yes</button><button type="button" data-fb="not-helpful">&#128078; Not really</button></div>
+  <p class="copy">CHE485 Chemistry Laboratory &middot; Faculty of Chemical Engineering, UiTM &middot; Oct 2026 semester &middot; This page records anonymous usage statistics (no personal data).</p>
 </div>
 </section>
 
@@ -987,6 +995,7 @@ function setActive(i){
   prog.style.width=((i+1)/slides.length*100)+'%';
   slides.forEach(function(s,k){s.setAttribute('aria-label',(k+1)+' of '+slides.length);});
   document.title='CHE485 · '+slides[i].getAttribute('data-title');
+  if(window.trackSlide)window.trackSlide(ids[i],slides[i].getAttribute('data-title'));
 }
 var tick=false;
 deck.addEventListener('scroll',function(){if(tick)return;tick=true;requestAnimationFrame(function(){tick=false;var i=Math.round(deck.scrollLeft/deck.clientWidth);if(i!==idx)setActive(i);});},{passive:true});
@@ -1032,6 +1041,34 @@ set(saved.indexOf(i)>-1);
 b.addEventListener('click',function(){var v=b.getAttribute('aria-checked')!=='true';set(v);
 var s=[];document.querySelectorAll('.td .chk').forEach(function(x,j){if(x.getAttribute('aria-checked')==='true')s.push(j)});
 try{localStorage.setItem(k,JSON.stringify(s))}catch(e){}})})})();
+
+/* ===== anonymous usage statistics (GoatCounter) ===== */
+(function(){
+function gc(o){var n=0;(function go(){if(window.goatcounter&&window.goatcounter.count){try{window.goatcounter.count(o);}catch(e){}}else if(n++<40){setTimeout(go,250);}})();}
+var lastSlide='',timer=null;
+window.trackSlide=function(id,title){clearTimeout(timer);timer=setTimeout(function(){if(id===lastSlide)return;lastSlide=id;gc({path:'/slide/'+id,title:'CHE485 · '+title});},900);};
+function ev(name){gc({path:'click/'+name,title:name,event:true});}
+var h0=(location.hash||'#home').slice(1);window.trackSlide(h0,(document.title||'').replace('CHE485 · ',''));
+document.addEventListener('click',function(e){
+  var a=e.target.closest&&e.target.closest('a[href]');
+  if(a){var h=a.getAttribute('href')||'';var n='';
+    if(h.indexOf('1kT1ueh3')>-1)n='lesson-plan';
+    else if(h.indexOf('isyarah.com')>-1)n='announcements';
+    else if(h.indexOf('1AXPCB0o')>-1)n='lab-manual';
+    else if(h.indexOf('1ZiJ6aCB')>-1)n='cover-page';
+    else if(h.indexOf('1P5u3wVz')>-1)n='rubric';
+    else if(h.indexOf('1NYHP4MM')>-1)n='lab-report-guidelines';
+    else if(h.indexOf('1fHmFB1t')>-1)n='safety-briefing';
+    else if(h.indexOf('151XreEO')>-1)n='timetable-J';
+    else if(h.indexOf('1EougGq4')>-1)n='timetable-B';
+    else if(h.indexOf('mailto:')===0)n='email-lecturer';
+    if(n)ev(n);}
+  var p=e.target.closest&&e.target.closest('.pick');if(p)ev('group-'+p.getAttribute('data-k'));
+  var c=e.target.closest&&e.target.closest('.chk');if(c)ev('checklist-step-'+(1+[].indexOf.call(document.querySelectorAll('.chk'),c)));
+  var f=e.target.closest&&e.target.closest('[data-fb]');
+  if(f){ev('feedback-'+f.getAttribute('data-fb'));var box=document.getElementById('fb');box.classList.add('done');document.getElementById('fbq').textContent='Thank you for your feedback!';}
+});
+})();
 </script>
 </body>
 </html>
