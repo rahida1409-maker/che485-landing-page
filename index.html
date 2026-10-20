@@ -988,7 +988,6 @@ function setActive(i){
   prevB.disabled=i===0;nextB.disabled=i===slides.length-1;
   prog.style.width=((i+1)/slides.length*100)+'%';
   slides.forEach(function(s,k){s.setAttribute('aria-label',(k+1)+' of '+slides.length);});
-  try{history.replaceState(null,'','#'+ids[i]);}catch(e){}
   document.title='CHE485 · '+slides[i].getAttribute('data-title');
 }
 var tick=false;
@@ -1021,7 +1020,7 @@ deck.addEventListener('wheel',function(e){
   e.preventDefault();
   var now=Date.now();if(now-wheelLock<700)return;wheelLock=now;goTo(idx+dir);
 },{passive:false});
-var h=(location.hash||'').slice(1),k0=ids.indexOf(h);
+var k0=-1; /* always start at Home; slide not stored in URL */
 if(k0>-1){goTo(k0,true);}
 setActive(k0>-1?k0:0);
 })();
